@@ -170,7 +170,6 @@ class MainActivity : AppCompatActivity() {
         binding.answersGroup.setOnCheckedChangeListener { _, checkedId ->
             selectedRadioButtonId = checkedId // Store the selected radio button ID
         }
-        // Usun
         //increaseButton.setOnClickListener {
         binding.buttonNext.setOnClickListener {
             val correct : Int = all_questions[0].correct_ans
