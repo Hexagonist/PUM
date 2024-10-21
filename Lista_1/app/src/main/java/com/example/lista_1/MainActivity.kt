@@ -1,6 +1,7 @@
 package com.example.lista_1
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
@@ -151,12 +152,12 @@ class MainActivity : AppCompatActivity() {
         //setContentView(R.layout.activity_main)
         setContentView(binding.root)
 
+        // Uncheck all radio buttons
         binding.answersGroup.clearCheck()
 
         if (savedInstanceState != null)
             count = savedInstanceState.getInt("counter_state")
 
-        //showCount.text = count.toString()
         binding.quetionCounter.text = "Pytanie " + count.toString() + "/10"
         if(count == 1) {
             binding.quetionText.text = all_questions[0].quetion
@@ -196,7 +197,25 @@ class MainActivity : AppCompatActivity() {
 //            if(count<=2) binding.quetionText.text = test[count].quetion
             binding.quetionCounter.text = "Pytanie " + count.toString() + "/10"
 
+
+
             binding.answersGroup.clearCheck()
+
+
+            // Finish quiz
+            if(count>10){
+                binding.progressBar.visibility = View.GONE
+                binding.cardViewQuestion.visibility = View.GONE
+                binding.answersGroup.visibility = View.GONE
+                binding.buttonNext.visibility = View.GONE
+
+//                binding.cardViewAnswers.
+
+                binding.finalPointsText.visibility = View.VISIBLE
+                binding.quetionCounter.text = "Gratulacje"
+                binding.finalPointsText.text = "Zdobyłeś " + points.toString() + " pkt"
+
+            }
         }
     }
 
