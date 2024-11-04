@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
     //private val showCount: TextView by lazy{findViewById(R.id.show_count)}
     //private val increaseButton: Button by lazy { findViewById(R.id.increase_button) }
     private var count = 1
-    private var points = 0
+    private var points: Int = 0
     private var selectedRadioButtonId: Int = -1
 
 
@@ -142,6 +142,7 @@ class MainActivity : AppCompatActivity() {
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putInt("counter_state", count)
+        outState.putInt("points_state", points)
     }
 
 
@@ -155,8 +156,10 @@ class MainActivity : AppCompatActivity() {
         // Uncheck all radio buttons
         binding.answersGroup.clearCheck()
 
-        if (savedInstanceState != null)
+        if (savedInstanceState != null) {
             count = savedInstanceState.getInt("counter_state")
+            points = savedInstanceState.getInt("points_state")
+        }
 
         binding.quetionCounter.text = "Pytanie " + count.toString() + "/10"
         if(count == 1) {
@@ -165,6 +168,7 @@ class MainActivity : AppCompatActivity() {
             binding.answer1.text = all_questions[0].answers[1]
             binding.answer2.text = all_questions[0].answers[2]
             binding.answer3.text = all_questions[0].answers[3]
+            binding.progressBar.progress = count*10
         }
 
 
@@ -173,15 +177,25 @@ class MainActivity : AppCompatActivity() {
         }
         //increaseButton.setOnClickListener {
         binding.buttonNext.setOnClickListener {
-            val correct : Int = all_questions[0].correct_ans
+            val correct : Int = all_questions[count-1].correct_ans
             val selectedButton = when (selectedRadioButtonId) {
-                binding.answer0.id -> 0
-                binding.answer1.id -> 1
-                binding.answer2.id -> 2
-                binding.answer3.id -> 3
+                binding.answer0.id -> 1
+                binding.answer1.id -> 2
+                binding.answer2.id -> 3
+                binding.answer3.id -> 4
                 else -> -1
             }
-            if(selectedButton == correct) points++
+            println("Points = $points")
+            println("Selected: $selectedButton")
+            println("Correct: $correct")
+
+            if(selectedButton == correct) {
+                points++
+                println("Points++")
+            }
+//            println("Points = $points")
+
+
 //            val selected_id = binding.answersGroup.checkedRadioButtonId
 
 
@@ -193,6 +207,7 @@ class MainActivity : AppCompatActivity() {
                 binding.answer1.text = all_questions[count-1].answers[1]
                 binding.answer2.text = all_questions[count-1].answers[2]
                 binding.answer3.text = all_questions[count-1].answers[3]
+                binding.progressBar.progress = count*10
             }
 //            if(count<=2) binding.quetionText.text = test[count].quetion
             binding.quetionCounter.text = "Pytanie " + count.toString() + "/10"
@@ -213,7 +228,7 @@ class MainActivity : AppCompatActivity() {
 
                 binding.finalPointsText.visibility = View.VISIBLE
                 binding.quetionCounter.text = "Gratulacje"
-                binding.finalPointsText.text = "Zdobyłeś " + points.toString() + " pkt"
+                binding.finalPointsText.text = "Zdobyłeś " + (points*10).toString() + " pkt"
 
             }
         }
