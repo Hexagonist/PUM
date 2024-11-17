@@ -3,29 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/fragmentA2">
+    app:startDestination="@id/fragmentMMenu">
 
     <fragment
-        android:id="@+id/fragmentB"
-        android:name="com.example.lista2.FragmentB"
-        android:label="fragment_b"
-        tools:layout="@layout/fragment_b" >
-        <action
-            android:id="@+id/action_fragmentB_to_fragmentA2"
-            app:destination="@id/fragmentA2" />
-    </fragment>
-    <fragment
-        android:id="@+id/fragmentA2"
-        android:name="com.example.lista2.FragmentA"
+        android:id="@+id/fragmentMMenu"
+        android:name="com.example.lista2.FragmentMMenu"
         android:label="fragment_a"
-        tools:layout="@layout/fragment_a" >
+        tools:layout="@layout/fragment_mmenu" >
         <action
-            android:id="@+id/action_fragmentA2_to_fragmentB"
-            app:destination="@id/fragmentB" >
-
-            <argument android:name="value"
-                app:argType="integer"/>
-
-        </action>
+            android:id="@+id/action_fragmentMMenu_to_fragmentRegister"
+            app:destination="@id/fragmentRegister" />
     </fragment>
+
+    <fragment
+        android:id="@+id/fragmentRegister"
+        android:name="com.example.lista2.FragmentRegister"
+        android:label="fragment_b"
+        tools:layout="@layout/fragment_register" />
 </navigation>
