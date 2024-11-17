@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
+
 import com.example.lista2.databinding.FragmentABinding
 
 class FragmentA : Fragment() {
