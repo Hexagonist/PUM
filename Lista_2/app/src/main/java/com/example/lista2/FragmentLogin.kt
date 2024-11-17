@@ -9,6 +9,12 @@ import androidx.navigation.Navigation
 
 import com.example.lista2.databinding.FragmentLoginBinding
 
+
+
+//class User (var login : String = "",
+//            var password : String = "")
+
+
 class FragmentLogin : Fragment() {
 
     private lateinit var binding: FragmentLoginBinding
@@ -18,6 +24,14 @@ class FragmentLogin : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentLoginBinding.inflate(inflater)
+
+        // Create basic list of 5 users
+//        val users : MutableList<User> = mutableListOf()
+//        for (nums in 1..5){
+//            users.add(User("user_$nums", nums.toString()))
+//        }
+
+
 
 //        binding.fabA.setOnClickListener {
 //            val action = FragmentMMenuDirections.actionFragmentMMenuToFragmentB(5)

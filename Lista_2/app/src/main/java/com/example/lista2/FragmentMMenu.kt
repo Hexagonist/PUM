@@ -9,6 +9,10 @@ import androidx.navigation.Navigation
 
 import com.example.lista2.databinding.FragmentMmenuBinding
 
+//class User (var login : String = "",
+//            var password : String = "")
+
+
 class FragmentMMenu : Fragment() {
 
     private lateinit var binding: FragmentMmenuBinding
@@ -23,6 +27,12 @@ class FragmentMMenu : Fragment() {
 //            val action = FragmentMMenuDirections.actionFragmentMMenuToFragmentB(5)
 //            Navigation.findNavController(requireView()).navigate(action)
 //        }
+
+        // Create basic list of 5 users
+        val users : MutableList<User> = mutableListOf()
+        for (nums in 1..5){
+            users.add(User("user_$nums", nums.toString()))
+        }
 
         binding.buttonLogin.setOnClickListener{
             val action = FragmentMMenuDirections.actionFragmentMMenuToFragmentLogin()
