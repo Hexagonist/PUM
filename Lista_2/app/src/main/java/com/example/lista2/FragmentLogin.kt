@@ -7,17 +7,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
 
-import com.example.lista2.databinding.FragmentMmenuBinding
+import com.example.lista2.databinding.FragmentLoginBinding
 
-class FragmentMMenu : Fragment() {
+class FragmentLogin : Fragment() {
 
-    private lateinit var binding: FragmentMmenuBinding
+    private lateinit var binding: FragmentLoginBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentMmenuBinding.inflate(inflater)
+        binding = FragmentLoginBinding.inflate(inflater)
 
 //        binding.fabA.setOnClickListener {
 //            val action = FragmentMMenuDirections.actionFragmentMMenuToFragmentB(5)
@@ -25,12 +25,12 @@ class FragmentMMenu : Fragment() {
 //        }
 
         binding.buttonLogin.setOnClickListener{
-            val action = FragmentMMenuDirections.actionFragmentMMenuToFragmentLogin()
+            val action = FragmentLoginDirections.actionFragmentLoginToFragmentWelcome()
             Navigation.findNavController(requireView()).navigate(action)
         }
 
         binding.buttonRegister.setOnClickListener{
-            val action = FragmentMMenuDirections.actionFragmentMMenuToFragmentRegister()
+            val action = FragmentLoginDirections.actionFragmentLoginToFragmentRegister2()
             Navigation.findNavController(requireView()).navigate(action)
         }
 

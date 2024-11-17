@@ -25,6 +25,11 @@ class FragmentRegister : Fragment() {
 //            Navigation.findNavController(requireView()).navigate(action)
 //        }
 
+        binding.buttonRegister.setOnClickListener{
+            val action = FragmentRegisterDirections.actionFragmentRegisterToFragmentLogin()
+            Navigation.findNavController(requireView()).navigate(action)
+        }
+
         return binding.root
     }
 }

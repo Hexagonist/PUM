@@ -13,11 +13,43 @@
         <action
             android:id="@+id/action_fragmentMMenu_to_fragmentRegister"
             app:destination="@id/fragmentRegister" />
+        <action
+            android:id="@+id/action_fragmentMMenu_to_fragmentLogin"
+            app:destination="@id/fragmentLogin" />
     </fragment>
+
 
     <fragment
         android:id="@+id/fragmentRegister"
         android:name="com.example.lista2.FragmentRegister"
         android:label="fragment_b"
-        tools:layout="@layout/fragment_register" />
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/action_fragmentRegister_to_fragmentLogin"
+            app:destination="@id/fragmentLogin" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/fragmentLogin"
+        android:name="com.example.lista2.FragmentLogin"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_fragmentLogin_to_fragmentRegister2"
+            app:destination="@id/fragmentRegister" />
+        <action
+            android:id="@+id/action_fragmentLogin_to_fragmentWelcome"
+            app:destination="@id/fragmentWelcome" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentWelcome"
+        android:name="com.example.lista2.FragmentWelcome"
+        android:label="fragment_welcome"
+        tools:layout="@layout/fragment_welcome" >
+        <action
+            android:id="@+id/action_fragmentWelcome_to_fragmentMMenu"
+            app:destination="@id/fragmentMMenu" />
+    </fragment>
 </navigation>

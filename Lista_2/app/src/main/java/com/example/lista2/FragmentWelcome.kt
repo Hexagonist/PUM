@@ -7,30 +7,25 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
 
-import com.example.lista2.databinding.FragmentMmenuBinding
+import com.example.lista2.databinding.FragmentWelcomeBinding
 
-class FragmentMMenu : Fragment() {
+class FragmentWelcome : Fragment() {
 
-    private lateinit var binding: FragmentMmenuBinding
+    private lateinit var binding: FragmentWelcomeBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentMmenuBinding.inflate(inflater)
+        binding = FragmentWelcomeBinding.inflate(inflater)
 
 //        binding.fabA.setOnClickListener {
 //            val action = FragmentMMenuDirections.actionFragmentMMenuToFragmentB(5)
 //            Navigation.findNavController(requireView()).navigate(action)
 //        }
 
-        binding.buttonLogin.setOnClickListener{
-            val action = FragmentMMenuDirections.actionFragmentMMenuToFragmentLogin()
-            Navigation.findNavController(requireView()).navigate(action)
-        }
-
-        binding.buttonRegister.setOnClickListener{
-            val action = FragmentMMenuDirections.actionFragmentMMenuToFragmentRegister()
+        binding.buttonLogout.setOnClickListener{
+            val action = FragmentWelcomeDirections.actionFragmentWelcomeToFragmentMMenu()
             Navigation.findNavController(requireView()).navigate(action)
         }
 
