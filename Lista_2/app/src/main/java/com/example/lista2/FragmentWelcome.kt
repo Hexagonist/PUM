@@ -7,22 +7,25 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
 
-import com.example.lista2.databinding.FragmentABinding
+import com.example.lista2.databinding.FragmentWelcomeBinding
 
-class FragmentA : Fragment() {
+class FragmentWelcome : Fragment() {
 
-    private lateinit var binding: FragmentABinding
+    private lateinit var binding: FragmentWelcomeBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentABinding.inflate(inflater)
+        binding = FragmentWelcomeBinding.inflate(inflater)
 
-        binding.fabA.setOnClickListener {
-            val action = FragmentADirections.actionFragmentA2ToFragmentB(5)
+        binding.textView.text = "Witaj\n" + arguments?.getString("login") // receive login
+
+        binding.buttonLogout.setOnClickListener{
+            val action = FragmentWelcomeDirections.actionFragmentWelcomeToFragmentMMenu()
             Navigation.findNavController(requireView()).navigate(action)
         }
+
 
         return binding.root
     }
