@@ -11,6 +11,7 @@ class MainActivity : AppCompatActivity() {
     private val all_users: UsersViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
 
+
         // Create 5 users shared by every Fragment
         for (nums in 1..5){
             all_users.addUser(User("user_$nums", nums.toString()))

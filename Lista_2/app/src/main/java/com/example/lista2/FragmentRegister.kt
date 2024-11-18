@@ -39,6 +39,14 @@ class FragmentRegister : Fragment() {
             {
                 Toast.makeText(requireContext(), "Passwords must be the same!", Toast.LENGTH_SHORT).show()
             }
+            else if(input_login == "")
+            {
+                Toast.makeText(requireContext(), "Login cannot be empty!", Toast.LENGTH_SHORT).show()
+            }
+            else if(input_password == "")
+            {
+                Toast.makeText(requireContext(), "Password cannot be empty!", Toast.LENGTH_SHORT).show()
+            }
             // success
             else
             {
