@@ -3,9 +3,9 @@
     <item
         android:id="@+id/E1"
         android:icon="@drawable/baseline_home_24"
-        android:title="HOME"/>
+        android:title="Listy zadań"/>
     <item
         android:id="@+id/E2"
         android:icon="@drawable/baseline_home_24"
-        android:title="SECOND"/>
+        android:title="Oceny"/>
 </menu>
