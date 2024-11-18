@@ -5,11 +5,11 @@ import androidx.lifecycle.ViewModel
 class UsersViewModel : ViewModel() {
 
 
-    var users: MutableList<User> = mutableListOf()
+    var users_list: MutableList<User> = mutableListOf()
 
     fun addUser(user: User) {
-        users.add(user)
+        users_list.add(user)
     }
 
-    fun getUsers(): List<User> = users
+    fun getUsers(): List<User> = users_list
 }

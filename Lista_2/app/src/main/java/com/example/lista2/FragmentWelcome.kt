@@ -24,6 +24,8 @@ class FragmentWelcome : Fragment() {
 //            Navigation.findNavController(requireView()).navigate(action)
 //        }
 
+        binding.textView.text = "Witaj\n" + arguments?.getString("login") // receive login
+
         binding.buttonLogout.setOnClickListener{
             val action = FragmentWelcomeDirections.actionFragmentWelcomeToFragmentMMenu()
             Navigation.findNavController(requireView()).navigate(action)

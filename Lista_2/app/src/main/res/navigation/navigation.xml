@@ -35,12 +35,18 @@
         android:name="com.example.lista2.FragmentLogin"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
+
         <action
             android:id="@+id/action_fragmentLogin_to_fragmentRegister2"
             app:destination="@id/fragmentRegister" />
+
         <action
             android:id="@+id/action_fragmentLogin_to_fragmentWelcome"
-            app:destination="@id/fragmentWelcome" />
+            app:destination="@id/fragmentWelcome">
+        <argument android:name="login"
+            app:argType="string"/>
+        </action>
+
     </fragment>
 
     <fragment

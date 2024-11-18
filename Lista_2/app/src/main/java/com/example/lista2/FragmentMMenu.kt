@@ -9,11 +9,15 @@ import androidx.navigation.Navigation
 
 import com.example.lista2.databinding.FragmentMmenuBinding
 
+import androidx.fragment.app.activityViewModels
+
 //class User (var login : String = "",
 //            var password : String = "")
 
 
 class FragmentMMenu : Fragment() {
+    // Shared ViewModel instance
+//    private val all_users: UsersViewModel by activityViewModels()
 
     private lateinit var binding: FragmentMmenuBinding
     override fun onCreateView(
@@ -29,10 +33,10 @@ class FragmentMMenu : Fragment() {
 //        }
 
         // Create basic list of 5 users
-        val users : MutableList<User> = mutableListOf()
-        for (nums in 1..5){
-            users.add(User("user_$nums", nums.toString()))
-        }
+//        val users : MutableList<User> = mutableListOf()
+//        for (nums in 1..5){
+//            users.add(User("user_$nums", nums.toString()))
+//        }
 
         binding.buttonLogin.setOnClickListener{
             val action = FragmentMMenuDirections.actionFragmentMMenuToFragmentLogin()

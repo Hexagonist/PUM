@@ -25,12 +25,14 @@ import androidx.lifecycle.ViewModel
 
 
 class MainActivity : AppCompatActivity() {
-    private val userViewModel: UsersViewModel by viewModels()
+    private val all_users: UsersViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
-        // Create basic list of 5 users
+
+        // Create 5 users shared by every Fragment
         for (nums in 1..5){
-            userViewModel.addUser(User("user_$nums", nums.toString()))
+            all_users.addUser(User("user_$nums", nums.toString()))
         }
+
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
