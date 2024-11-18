@@ -12,11 +12,6 @@ import androidx.fragment.app.activityViewModels
 import android.widget.Toast
 
 
-
-//class User (var login : String = "",
-//            var password : String = "")
-
-
 class FragmentLogin : Fragment() {
     private lateinit var binding: FragmentLoginBinding
 
@@ -30,11 +25,6 @@ class FragmentLogin : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentLoginBinding.inflate(inflater)
 
-
-//        binding.fabA.setOnClickListener {
-//            val action = FragmentMMenuDirections.actionFragmentMMenuToFragmentB(5)
-//            Navigation.findNavController(requireView()).navigate(action)
-//        }
 
         binding.buttonLogin.setOnClickListener{
             var input_login = binding.textInputLogin.editText?.text.toString()

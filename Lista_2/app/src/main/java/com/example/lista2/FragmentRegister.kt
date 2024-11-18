@@ -23,13 +23,6 @@ class FragmentRegister : Fragment() {
     ): View {
         binding = FragmentRegisterBinding.inflate(inflater)
 
-//        binding.textview.text = arguments?.getInt("value").toString() // odebranie danych
-
-//        binding.fabB.setOnClickListener {
-//            val action = FragmentRegisterBinding.actionFragmentBToFragmentA2()
-//            Navigation.findNavController(requireView()).navigate(action)
-//        }
-
         binding.buttonRegister.setOnClickListener{
             var input_login = binding.textInputLogin.editText?.text.toString()
             var input_password = binding.textInputHaslo.editText?.text.toString()

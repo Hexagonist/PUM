@@ -6,23 +6,6 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.ViewModel
-
-
-//class UsersViewModel : ViewModel() {
-//    class User (var login : String = "",
-//            var password : String = "")
-//
-//    var users: MutableList<User> = mutableListOf()
-//
-//    fun addUser(user: User) {
-//        users.add(user)
-//    }
-//
-//    fun getUsers(): List<User> = users
-//}
-
 
 class MainActivity : AppCompatActivity() {
     private val all_users: UsersViewModel by viewModels()

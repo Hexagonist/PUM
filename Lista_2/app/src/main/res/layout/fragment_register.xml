@@ -16,16 +16,6 @@
         android:textSize="36sp"
         android:textStyle="bold" />
 
-    <!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-    <!--        android:id="@+id/fabA"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_margin="16dp"-->
-    <!--        android:clickable="true"-->
-    <!--        android:contentDescription="FAB"-->
-    <!--        android:src="@android:drawable/arrow_up_float" />-->
-
-
 
     <Button
         android:id="@+id/button_register"

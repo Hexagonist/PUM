@@ -19,11 +19,6 @@ class FragmentWelcome : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentWelcomeBinding.inflate(inflater)
 
-//        binding.fabA.setOnClickListener {
-//            val action = FragmentMMenuDirections.actionFragmentMMenuToFragmentB(5)
-//            Navigation.findNavController(requireView()).navigate(action)
-//        }
-
         binding.textView.text = "Witaj\n" + arguments?.getString("login") // receive login
 
         binding.buttonLogout.setOnClickListener{
