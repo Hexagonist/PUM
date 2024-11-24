@@ -22,13 +22,13 @@ class MainActivity : AppCompatActivity() {
             as NavHostFragment
         navHostFragment.findNavController()
     }
-//    private val all_users: UsersViewModel by viewModels()
+    private val all_exercise_list: UsersViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
 
 
-//        // Create 5 users shared by every Fragment
+        // Create 5 users shared by every Fragment
 //        for (nums in 1..5){
-//            all_users.addUser(User("user_$nums", nums.toString()))
+        all_exercise_list.generateExerciseLists(3)
 //        }
 
         super.onCreate(savedInstanceState)
