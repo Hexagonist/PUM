@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
+import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.example.lista2.databinding.E1Binding
 
@@ -27,6 +28,12 @@ class E1 : Fragment() {
 //            val action = FragmentMMenuDirections.actionFragmentMMenuToFragmentRegister()
 //            Navigation.findNavController(requireView()).navigate(action)
 //        }
+
+        val wordList by lazy { MutableList(6) { "word $it" } }
+        binding.recyclerView.apply {
+            adapter = WordListAdapter(wordList)
+            layoutManager = LinearLayoutManager(context)
+        }
 
 
 
