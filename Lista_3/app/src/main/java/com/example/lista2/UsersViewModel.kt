@@ -20,10 +20,11 @@ class UsersViewModel : ViewModel() {
         return List(numberOfWords) { loremIpsumWords.random() }.joinToString(" ")
     }
 
-    fun generateExerciseLists(numberOfLists: Int): List<ExerciseList> {
+    fun generateExerciseLists(numberOfLists: Int) {
         val subjects = listOf("matematyka", "pum", "fizyka", "elektronika", "algorytmy")
 
-        return List(numberOfLists) {
+
+        var lists = List(numberOfLists) {
             val exerciseList = ExerciseList()
 
             // Assign a random subject from the list
@@ -43,6 +44,7 @@ class UsersViewModel : ViewModel() {
 
             exerciseList
         }
+        exercise_list = lists
     }
 }
 
