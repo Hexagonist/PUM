@@ -6,6 +6,20 @@ import kotlin.random.Random
 class UsersViewModel : ViewModel() {
     var exercise_list: ExerciseList = ExerciseList()
 
+    // Function to generate random Lorem Ipsum text
+    fun generateRandomLoremIpsum(minWords: Int = 5, maxWords: Int = 20): String {
+        val loremIpsumWords = listOf(
+            "Lorem", "ipsum", "dolor", "sit", "amet", "consectetur", "adipiscing", "elit",
+            "sed", "do", "eiusmod", "tempor", "incididunt", "ut", "labore", "et", "dolore",
+            "magna", "aliqua", "Ut", "enim", "ad", "minim", "veniam", "quis", "nostrud",
+            "exercitation", "ullamco", "laboris", "nisi", "ut", "aliquip", "ex", "ea", "commodo",
+            "consequat"
+        )
+
+        val numberOfWords = Random.nextInt(minWords, maxWords + 1) // Generate word count
+        return List(numberOfWords) { loremIpsumWords.random() }.joinToString(" ")
+    }
+
     fun generateExerciseLists(numberOfLists: Int): List<ExerciseList> {
         val subjects = listOf("matematyka", "pum", "fizyka", "elektronika", "algorytmy")
 
@@ -22,7 +36,7 @@ class UsersViewModel : ViewModel() {
             val numberOfExercises = Random.nextInt(1, 11) // Upper bound exclusive
             exerciseList.exercises = List(numberOfExercises) {
                 Exercise(
-                    content = "Exercise Content ${it + 1}", // Example content
+                    content = generateRandomLoremIpsum(), // Generate random Lorem Ipsum content
                     points = Random.nextInt(0, 11) // Points between 0 and 10
                 )
             }.toMutableList()
