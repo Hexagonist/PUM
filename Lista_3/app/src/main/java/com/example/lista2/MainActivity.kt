@@ -10,6 +10,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.lista2.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -31,6 +32,9 @@ class MainActivity : AppCompatActivity() {
         all_exercise_list.generateExerciseLists(3)
 //        }
 
+
+
+
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
@@ -41,6 +45,11 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
+        val wordList by lazy { MutableList(10) { "word $it" } }
+        binding.recyclerView.apply {
+            adapter = WordListAdapter(wordList)
+            layoutManager = LinearLayoutManager(this@MainActivity)
+        }
         binding.bottomNav.setupWithNavController(navController)
     }
 }

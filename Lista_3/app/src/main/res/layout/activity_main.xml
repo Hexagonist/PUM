@@ -21,9 +21,15 @@
         app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/navigation" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/bottom_nav"
         app:menu="@menu/bottom_menu"/>
+
 </LinearLayout>
