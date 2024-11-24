@@ -9,6 +9,7 @@ class WordListViewHolder(private val binding: WordListItemBinding) :
 
     fun bind(item: String){
         binding.singleWord.text = item
+        binding.singleWord2.text = item
     }
 }
 

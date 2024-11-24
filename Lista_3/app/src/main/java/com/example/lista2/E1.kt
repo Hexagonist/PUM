@@ -29,6 +29,7 @@ class E1 : Fragment() {
 //        }
 
 
+
         return binding.root
     }
 }
