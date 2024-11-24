@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        val wordList by lazy { MutableList(10) { "word $it" } }
+        val wordList by lazy { MutableList(6) { "word $it" } }
         binding.recyclerView.apply {
             adapter = WordListAdapter(wordList)
             layoutManager = LinearLayoutManager(this@MainActivity)
