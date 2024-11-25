@@ -17,8 +17,8 @@ class E2 : Fragment() {
     private val list_of_exer_lists: UsersViewModel by activityViewModels()
 
 
-    // Shared ViewModel instance
-    private val usersModel: UsersViewModel by activityViewModels()
+//    // Shared ViewModel instance
+//    private val usersModel: UsersViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

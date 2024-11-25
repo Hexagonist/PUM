@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -23,19 +24,17 @@ class E1 : Fragment() {
         binding = E1Binding.inflate(inflater)
 
 
-//        binding.buttonLogin.setOnClickListener{
-//            val action = FragmentMMenuDirections.actionFragmentMMenuToFragmentLogin()
-//            Navigation.findNavController(requireView()).navigate(action)
-//        }
-//
-//        binding.buttonRegister.setOnClickListener{
-//            val action = FragmentMMenuDirections.actionFragmentMMenuToFragmentRegister()
-//            Navigation.findNavController(requireView()).navigate(action)
+//        val wordList by lazy { List(20) { "word $it" } }
+
+//        binding.recyclerView.apply {
+//            adapter = WordListAdapter(list_of_exer_lists.getList())
+//            layoutManager = LinearLayoutManager(context)
 //        }
 
-//        val wordList by lazy { List(20) { "word $it" } }
         binding.recyclerView.apply {
-            adapter = WordListAdapter(list_of_exer_lists.getList())
+            adapter = WordListAdapter(list_of_exer_lists.getList()){
+                Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show()
+            }
             layoutManager = LinearLayoutManager(context)
         }
 

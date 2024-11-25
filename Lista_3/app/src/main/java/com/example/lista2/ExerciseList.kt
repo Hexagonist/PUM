@@ -8,5 +8,7 @@ class ExerciseList {
     var grade: Float = 0.0f
     var listNum: Int = 0
 
+//    fun getExercises() : MutableList<Exercise> {return exercises}
+
 
 }

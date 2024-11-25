@@ -45,6 +45,29 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
+
         binding.bottomNav.setupWithNavController(navController)
     }
 }
+
+//class WordListAdapter(
+//    private val wordList: MutableList<String>,
+//    private val onItemClick: (String) -> Unit
+//) : RecyclerView.Adapter<WordListViewHolder>() {
+//    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WordListViewHolder {
+//        return WordListViewHolder(
+//            WordListItemBinding.inflate(
+//                LayoutInflater.from(parent.context), parent, false
+//            )
+//        ){onItemClick(wordList[it])}
+//    }
+//    binding.recyclerView.apply {
+//        adapter = WordListAdapter(wordList){
+//            Toast.makeText(this@MainActivity, "Clicked + $it", Toast.LENGTH_SHORT).show()
+//        }
+//        layoutManager = LinearLayoutManager(this@MainActivity)
+//    }
+//}
+
+
+
