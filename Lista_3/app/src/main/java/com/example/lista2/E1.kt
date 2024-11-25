@@ -33,7 +33,7 @@ class E1 : Fragment() {
 
         binding.recyclerView.apply {
             adapter = WordListAdapter(list_of_exer_lists.getList()){
-                Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Clicked + ${it.subject.name}", Toast.LENGTH_SHORT).show()
             }
             layoutManager = LinearLayoutManager(context)
         }
