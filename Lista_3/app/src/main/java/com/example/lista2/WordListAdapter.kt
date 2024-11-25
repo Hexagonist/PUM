@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.lista2.databinding.WordListItemBinding
 
 
-class WordListAdapter(private val wordList: MutableList<String>) :
+class WordListAdapter(private val wordList: List<ExerciseList>) :
     RecyclerView.Adapter<WordListViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WordListViewHolder {
         return WordListViewHolder(

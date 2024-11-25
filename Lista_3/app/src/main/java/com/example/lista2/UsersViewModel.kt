@@ -4,7 +4,7 @@ import kotlin.random.Random
 
 
 class UsersViewModel : ViewModel() {
-    var exercise_list: ExerciseList = ExerciseList()
+    lateinit var exercise_list: List<ExerciseList>
 
     // Function to generate random Lorem Ipsum text
     fun generateRandomLoremIpsum(minWords: Int = 5, maxWords: Int = 20): String {
@@ -46,10 +46,11 @@ class UsersViewModel : ViewModel() {
         }
         exercise_list = lists
     }
+
+    fun getList(): List<ExerciseList> = exercise_list
 }
 
 //    fun addUser(user: User) {
 //        users_list.add(user)
 //    }
 
-//    fun getUsers(): List<User> = users_list

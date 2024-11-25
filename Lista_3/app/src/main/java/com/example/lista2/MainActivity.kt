@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
 
         // Create 5 users shared by every Fragment
 //        for (nums in 1..5){
-        all_exercise_list.generateExerciseLists(3)
+        all_exercise_list.generateExerciseLists(20)
 //        }
 
 
