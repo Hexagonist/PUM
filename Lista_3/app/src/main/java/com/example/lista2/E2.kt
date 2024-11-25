@@ -59,7 +59,7 @@ class E2 : Fragment() {
 //            }
 //        }
         binding.recyclerView.apply {
-            adapter = WordListAdapter(list_of_exer_lists.getList())
+            adapter = WordListAdapterE2(list_of_exer_lists.getSubjectsSummaryList())
             layoutManager = LinearLayoutManager(context)
         }
 
