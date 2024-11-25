@@ -21,7 +21,7 @@ class UsersViewModel : ViewModel() {
     }
 
     fun generateExerciseLists(numberOfLists: Int) {
-        val subjects = listOf("matematyka", "pum", "fizyka", "elektronika", "algorytmy")
+        val subjects = listOf("Matematyka", "PUM", "Fizyka", "Elektronika", "Algorytmy")
 
 
         var lists = List(numberOfLists) {
@@ -31,7 +31,7 @@ class UsersViewModel : ViewModel() {
             exerciseList.subject = Subject(name = subjects.random())
 
             // Assign a random grade between 3.0 and 5.0 with a step of 0.5
-            exerciseList.grade = Random.nextInt(6).let { 3.0f + it * 0.5f }
+            exerciseList.grade = Random.nextInt(5).let { 3.0f + it * 0.5f }
 
             // Create a random number of exercises (1 to 10)
             val numberOfExercises = Random.nextInt(1, 11) // Upper bound exclusive
@@ -41,6 +41,8 @@ class UsersViewModel : ViewModel() {
                     points = Random.nextInt(0, 11) // Points between 0 and 10
                 )
             }.toMutableList()
+
+
 
             exerciseList
         }

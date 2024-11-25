@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.lista2.databinding.WordListItemBinding
 
 
-class WordListAdapter(private val wordList: List<ExerciseList>) :
+class WordListAdapter(private val exerciseListList: List<ExerciseList>) :
     RecyclerView.Adapter<WordListViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WordListViewHolder {
         return WordListViewHolder(
@@ -15,11 +15,11 @@ class WordListAdapter(private val wordList: List<ExerciseList>) :
             ))
     }
 
-    override fun getItemCount(): Int = wordList.size
+    override fun getItemCount(): Int = exerciseListList.size
 
     override fun onBindViewHolder(holder: WordListViewHolder, position: Int) {
-        val currentItem = wordList[position]
-        holder.bind(currentItem)
+        val currentItem = exerciseListList[position]
+        holder.bind(currentItem, position)
     }
 
 }

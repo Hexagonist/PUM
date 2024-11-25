@@ -6,6 +6,7 @@ class ExerciseList {
     var exercises: MutableList<Exercise> = mutableListOf()
     var subject: Subject = Subject()
     var grade: Float = 0.0f
+    var listNum: Int = 0
 
 
 }
