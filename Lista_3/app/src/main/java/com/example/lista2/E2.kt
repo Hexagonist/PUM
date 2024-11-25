@@ -9,10 +9,13 @@ import android.widget.Toast
 import androidx.navigation.Navigation
 import com.example.lista2.databinding.E2Binding
 import androidx.fragment.app.activityViewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 
 class E2 : Fragment() {
 
     private lateinit var binding: E2Binding
+    private val list_of_exer_lists: UsersViewModel by activityViewModels()
+
 
     // Shared ViewModel instance
     private val usersModel: UsersViewModel by activityViewModels()
@@ -55,6 +58,10 @@ class E2 : Fragment() {
 //                Navigation.findNavController(requireView()).navigate(action)
 //            }
 //        }
+        binding.recyclerView.apply {
+            adapter = WordListAdapter(list_of_exer_lists.getList())
+            layoutManager = LinearLayoutManager(context)
+        }
 
         return binding.root
     }

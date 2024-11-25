@@ -11,70 +11,76 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
         android:gravity="center_horizontal"
-        android:text="Zarejestruj"
+        android:text="Moje Oceny"
         android:textColor="@color/black"
-        android:textSize="36sp"
-        android:textStyle="bold" />
-
-
-    <Button
-        android:id="@+id/button_register"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="40dp"
-        android:layout_gravity="center_vertical"
-        android:layout_marginTop="140dp"
-        android:backgroundTint="#66cc99"
-        android:text="Zarejestruj"
-        android:textColor="#000000"
         android:textSize="24sp"
         android:textStyle="bold" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInput_login"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_marginTop="-70dp"
-        android:layout_marginHorizontal="40dp"
+        android:layout_marginTop="70dp"/>
 
-        >
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="login:" />
-    </com.google.android.material.textfield.TextInputLayout>
+<!--    <Button-->
+<!--        android:id="@+id/button_register"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginHorizontal="40dp"-->
+<!--        android:layout_gravity="center_vertical"-->
+<!--        android:layout_marginTop="140dp"-->
+<!--        android:backgroundTint="#66cc99"-->
+<!--        android:text="Zarejestruj"-->
+<!--        android:textColor="#000000"-->
+<!--        android:textSize="24sp"-->
+<!--        android:textStyle="bold" />-->
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInput_haslo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_marginHorizontal="40dp"
+<!--    <com.google.android.material.textfield.TextInputLayout-->
+<!--        android:id="@+id/textInput_login"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="center_vertical"-->
+<!--        android:layout_marginTop="-70dp"-->
+<!--        android:layout_marginHorizontal="40dp"-->
 
-        >
+<!--        >-->
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="hasło:" />
-    </com.google.android.material.textfield.TextInputLayout>
+<!--        <com.google.android.material.textfield.TextInputEditText-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:hint="login:" />-->
+<!--    </com.google.android.material.textfield.TextInputLayout>-->
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInput_PowtorzHaslo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_marginTop="70dp"
-        android:layout_marginHorizontal="40dp"
+<!--    <com.google.android.material.textfield.TextInputLayout-->
+<!--        android:id="@+id/textInput_haslo"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="center_vertical"-->
+<!--        android:layout_marginHorizontal="40dp"-->
 
-        >
+<!--        >-->
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="powtórz hasło:" />
-    </com.google.android.material.textfield.TextInputLayout>
+<!--        <com.google.android.material.textfield.TextInputEditText-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:hint="hasło:" />-->
+<!--    </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--    <com.google.android.material.textfield.TextInputLayout-->
+<!--        android:id="@+id/textInput_PowtorzHaslo"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="center_vertical"-->
+<!--        android:layout_marginTop="70dp"-->
+<!--        android:layout_marginHorizontal="40dp"-->
+
+<!--        >-->
+
+<!--        <com.google.android.material.textfield.TextInputEditText-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:hint="powtórz hasło:" />-->
+<!--    </com.google.android.material.textfield.TextInputLayout>-->
 
 </FrameLayout>
