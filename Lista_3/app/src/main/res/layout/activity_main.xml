@@ -26,4 +26,5 @@
         android:layout_height="wrap_content"
         android:id="@+id/bottom_nav"
         app:menu="@menu/bottom_menu"/>
+
 </LinearLayout>

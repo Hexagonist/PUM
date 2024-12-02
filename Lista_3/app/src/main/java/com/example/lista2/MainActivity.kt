@@ -10,6 +10,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.lista2.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -22,14 +23,12 @@ class MainActivity : AppCompatActivity() {
             as NavHostFragment
         navHostFragment.findNavController()
     }
-//    private val all_users: UsersViewModel by viewModels()
+    private val all_exercise_list: UsersViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
 
 
-//        // Create 5 users shared by every Fragment
-//        for (nums in 1..5){
-//            all_users.addUser(User("user_$nums", nums.toString()))
-//        }
+        // Create 20 exercise lists as dummy data
+        all_exercise_list.generateExerciseLists(20)
 
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -40,6 +39,7 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
 
         binding.bottomNav.setupWithNavController(navController)
     }
