@@ -10,7 +10,6 @@ class WordListViewHolderE2(private val binding: WordListItemBinding) :
         binding.subjectTextView.text = list_of_exercises.subject.name
         binding.listNumTextView.text = "Średnia: " + list_of_exercises.grade.toString()
         binding.exerNumTextView.text = "Liczba list: " + list_of_exercises.listNum.toString()
-//        binding.gradeTextView.text = "Ocena: " + list_of_exercises.grade.toString()
         binding.gradeTextView.text = ""
     }
 }

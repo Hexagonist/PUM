@@ -27,13 +27,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
 
-        // Create 5 users shared by every Fragment
-//        for (nums in 1..5){
+        // Create 20 exercise lists as dummy data
         all_exercise_list.generateExerciseLists(20)
-//        }
-
-
-
 
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -49,25 +44,3 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNav.setupWithNavController(navController)
     }
 }
-
-//class WordListAdapter(
-//    private val wordList: MutableList<String>,
-//    private val onItemClick: (String) -> Unit
-//) : RecyclerView.Adapter<WordListViewHolder>() {
-//    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WordListViewHolder {
-//        return WordListViewHolder(
-//            WordListItemBinding.inflate(
-//                LayoutInflater.from(parent.context), parent, false
-//            )
-//        ){onItemClick(wordList[it])}
-//    }
-//    binding.recyclerView.apply {
-//        adapter = WordListAdapter(wordList){
-//            Toast.makeText(this@MainActivity, "Clicked + $it", Toast.LENGTH_SHORT).show()
-//        }
-//        layoutManager = LinearLayoutManager(this@MainActivity)
-//    }
-//}
-
-
-
