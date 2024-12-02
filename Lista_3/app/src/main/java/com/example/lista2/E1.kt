@@ -33,7 +33,10 @@ class E1 : Fragment() {
 
         binding.recyclerView.apply {
             adapter = WordListAdapter(list_of_exer_lists.getList()){
-                Toast.makeText(context, "Clicked + ${it.subject.name}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Clicked + ${it.subject.name} + ${it.index}", Toast.LENGTH_SHORT).show()
+                val action = E1Directions.actionE1ToE3(it)
+//                val action = E1Directions.actionE1ToE3()
+                Navigation.findNavController(requireView()).navigate(action)
             }
             layoutManager = LinearLayoutManager(context)
         }

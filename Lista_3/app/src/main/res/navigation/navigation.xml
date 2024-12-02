@@ -11,11 +11,12 @@
         android:label="fragment_a"
         tools:layout="@layout/e1" >
         <action
-            android:id="@+id/action_fragmentMMenu_to_fragmentRegister"
-            app:destination="@id/E2" />
-        <action
-            android:id="@+id/action_fragmentMMenu_to_fragmentLogin"
-            app:destination="@id/E3" />
+            android:id="@+id/action_E1_to_E3"
+            app:destination="@id/E3">
+
+            <argument android:name="exerciseList"
+                app:argType="com.example.lista2.ExerciseList"/>
+        </action>
     </fragment>
 
 
@@ -23,23 +24,13 @@
         android:id="@+id/E2"
         android:name="com.example.lista2.E2"
         android:label="fragment_b"
-        tools:layout="@layout/e2" >
-        <action
-            android:id="@+id/action_fragmentRegister_to_fragmentLogin"
-            app:destination="@id/E3" />
-    </fragment>
+        tools:layout="@layout/e2" />
 
 
     <fragment
         android:id="@+id/E3"
         android:name="com.example.lista2.E3"
         android:label="fragment_login"
-        tools:layout="@layout/e3" >
-
-        <action
-            android:id="@+id/action_fragmentLogin_to_fragmentRegister2"
-            app:destination="@id/E2" />
-
-    </fragment>
+        tools:layout="@layout/e3" />
 
 </navigation>

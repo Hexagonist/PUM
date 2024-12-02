@@ -8,9 +8,9 @@ class WordListViewHolderE3(private val binding: WordListItemE3Binding) :
     RecyclerView.ViewHolder(binding.root){
 
     fun bind(exercise: Exercise, position: Int){
-        binding.taskNumTextView.text = "taskNum"
-        binding.pointsTextView.text = "pkt: "
-        binding.exerciseTextView.text = "Treść zadania "
+        binding.taskNumTextView.text = "Zadanie " + (position+1).toString()
+        binding.pointsTextView.text = "pkt: " + exercise.points
+        binding.exerciseTextView.text = exercise.content
     }
 }
 

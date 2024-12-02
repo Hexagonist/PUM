@@ -25,6 +25,7 @@ class UsersViewModel : ViewModel() {
         val subjects = listOf("Matematyka", "PUM", "Fizyka", "Elektronika", "Algorytmy")
 
 
+        var index = 0
         var lists = List(numberOfLists) {
             val exerciseList = ExerciseList()
 
@@ -33,6 +34,9 @@ class UsersViewModel : ViewModel() {
 
             // Assign a random grade between 3.0 and 5.0 with a step of 0.5
             exerciseList.grade = Random.nextInt(5).let { 3.0f + it * 0.5f }
+
+            exerciseList.index = index
+            index++
 
             // Create a random number of exercises (1 to 10)
             val numberOfExercises = Random.nextInt(1, 11) // Upper bound exclusive

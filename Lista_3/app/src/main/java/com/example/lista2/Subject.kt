@@ -1,3 +1,7 @@
 package com.example.lista2
 
-class Subject(var name : String = "")
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
+data class Subject(var name : String = "") : Parcelable
