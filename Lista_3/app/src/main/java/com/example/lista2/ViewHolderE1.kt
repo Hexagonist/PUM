@@ -3,7 +3,7 @@ package com.example.lista2
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lista2.databinding.WordListItemBinding
 
-class WordListViewHolder(
+class ViewHolderE1(
     private val binding: WordListItemBinding,
     onItemClick: (Int) -> Unit
 ) :

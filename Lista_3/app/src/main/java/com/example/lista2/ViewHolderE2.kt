@@ -3,7 +3,7 @@ package com.example.lista2
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lista2.databinding.WordListItemBinding
 
-class WordListViewHolderE2(private val binding: WordListItemBinding) :
+class ViewHolderE2(private val binding: WordListItemBinding) :
     RecyclerView.ViewHolder(binding.root){
 
     fun bind(list_of_exercises: ExerciseList, position: Int){

@@ -5,8 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.navigation.Navigation
 import com.example.lista2.databinding.E2Binding
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -23,7 +21,7 @@ class E2 : Fragment() {
         binding = E2Binding.inflate(inflater)
 
         binding.recyclerView.apply {
-            adapter = WordListAdapterE2(list_of_exer_lists.getSubjectsSummaryList())
+            adapter = AdapterE2(list_of_exer_lists.getSubjectsSummaryList())
             layoutManager = LinearLayoutManager(context)
         }
 

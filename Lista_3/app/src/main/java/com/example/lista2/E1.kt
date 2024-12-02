@@ -24,7 +24,7 @@ class E1 : Fragment() {
         binding = E1Binding.inflate(inflater)
 
         binding.recyclerView.apply {
-            adapter = WordListAdapter(list_of_exer_lists.getList()){
+            adapter = AdapterE1(list_of_exer_lists.getList()){
                 Toast.makeText(context, "Clicked + ${it.subject.name} + ${it.index}", Toast.LENGTH_SHORT).show()
                 val action = E1Directions.actionE1ToE3(it)
                 Navigation.findNavController(requireView()).navigate(action)

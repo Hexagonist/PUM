@@ -5,21 +5,19 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lista2.databinding.WordListItemBinding
 
-class WordListAdapter(
-    private val exerciseListList: List<ExerciseList>,
-    private val onItemClick: (ExerciseList) -> Unit
-) : RecyclerView.Adapter<WordListViewHolder>(){
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WordListViewHolder {
-        return WordListViewHolder(
+
+class AdapterE2(private val exerciseListList: List<ExerciseList>) :
+    RecyclerView.Adapter<ViewHolderE2>(){
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderE2 {
+        return ViewHolderE2(
             WordListItemBinding.inflate(
                 LayoutInflater.from(parent.context), parent, false
-            )
-        ){onItemClick(exerciseListList[it])}
+            ))
     }
 
     override fun getItemCount(): Int = exerciseListList.size
 
-    override fun onBindViewHolder(holder: WordListViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolderE2, position: Int) {
         val currentItem = exerciseListList[position]
         holder.bind(currentItem, position)
     }

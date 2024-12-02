@@ -1,10 +1,9 @@
 package com.example.lista2
 
 import androidx.recyclerview.widget.RecyclerView
-import com.example.lista2.databinding.WordListItemBinding
-import com.example.lista2.databinding.WordListItemE3Binding
+import com.example.lista2.databinding.ItemE3Binding
 
-class WordListViewHolderE3(private val binding: WordListItemE3Binding) :
+class ViewHolderE3(private val binding: ItemE3Binding) :
     RecyclerView.ViewHolder(binding.root){
 
     fun bind(exercise: Exercise, position: Int){
