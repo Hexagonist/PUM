@@ -31,6 +31,7 @@ class E3 : Fragment() {
             layoutManager = LinearLayoutManager(context)
 //            Toast.makeText(context, "E3", Toast.LENGTH_SHORT).show()
         }
+        binding.TextView.text = exerciseList?.subject?.name + "\nLista " + exerciseList?.index.toString()
 
 
         return binding.root
