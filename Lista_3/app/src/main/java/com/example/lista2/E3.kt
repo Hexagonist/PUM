@@ -23,7 +23,7 @@ class E3 : Fragment() {
 //        var list = arguments?.getParcelable<ExerciseList>("list")
 //        var exerciseList = args.exerciseList
 
-        var exerciseList = arguments?.getParcelable<ExerciseList>("exerciseList")
+        val exerciseList = arguments?.getParcelable<ExerciseList>("exerciseList")
 
         binding.recyclerView.apply {
 //            adapter = WordListAdapterE3(list_of_exer_lists.getList()[0])
