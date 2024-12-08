@@ -15,6 +15,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardColors
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Scaffold
@@ -45,12 +47,108 @@ class MainActivity : ComponentActivity() {
 
     private val questions = listOf(
         Question(
-            "Jak nazywa się najgłębszy punkt na Ziemi?",
-            listOf("Rów Atakamski", "Rów Filipiński", "Rów Tonga", "Rów Mariański"),
-            4
-        ),
-        // Add other questions similarly...
-    )
+        "Jak nazywa się najgłębszy punkt na Ziemi?",
+    listOf(
+        "Rów Atakamski",
+        "Rów Filipiński",
+        "Rów Tonga",
+        "Rów Mariański"),
+    4),
+
+        Question(
+        "Jakie jest największe zwierzę lądowe?",
+    listOf(
+    "Lew",
+    "Nosorożec",
+    "Słoń afrykański",
+    "Żyrafa",
+    ),
+    3),
+
+        Question(
+        "Który pierwiastek chemiczny ma symbol O?",
+    listOf(
+    "Wodór",
+    "Tlen",
+    "Azot",
+    "Węgiel",
+    ),
+    2),
+
+        Question(
+        "Ile jest planet w Układzie Słonecznym (bez Plutona)?",
+    listOf(
+    "7",
+    "8",
+    "9",
+    "10",
+    ),
+
+    2),
+
+        Question(
+        "Który z tych instrumentów jest instrumentem strunowym?",
+    listOf(
+    "Fortepian",
+    "Flet",
+    "Perkusja",
+    "Saksofon",
+    ),
+    1),
+
+        Question(
+        "Kto był pierwszym człowiekiem w kosmosie?",
+    listOf(
+    "Neil Armstrong",
+    "Yuri Gagarin",
+    "Buzz Aldrin",
+    "John Glenn",
+    ),
+
+    1),
+
+        Question(
+        "Jakie miasto jest stolicą Włoch?",
+    listOf(
+    "Mediolan",
+    "Neapol",
+    "Rzym",
+    "Florencja",
+    ),
+    3),
+
+        Question(
+        "Który z tych krajów nie leży w Europie?",
+    listOf(
+    "Francja",
+    "Egipt",
+    "Niemcy",
+    "Polska",
+    ),
+
+    2),
+
+        Question(
+        "Jak nazywa się najwyższy szczyt świata?",
+    listOf(
+    "K2",
+    "Lhotse",
+    "Kangczendzonga",
+    "Mount Everest",
+    ),
+    4),
+
+        Question(
+        "Jak nazywa się stolica Polski?",
+    listOf(
+    "Paryż",
+    "Honolulu",
+    "Warszawa",
+    "Sosnowiec",
+    ),
+
+    3))
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -126,7 +224,7 @@ fun QuestionScreen(
 
         Card(
             modifier = Modifier.fillMaxWidth(),
-//            backgroundColor = Color(0xFFD9D9D9),
+            colors = CardDefaults.cardColors(Color(0xFFD9D9D9))
         ) {
             Text(
                 text = question.question,
@@ -138,7 +236,7 @@ fun QuestionScreen(
 
         Card(
             modifier = Modifier.fillMaxWidth(),
-//            backgroundColor = Color(0xFFFFE6E6),
+            colors = CardDefaults.cardColors(Color(0xFFFFE6E6))
         ) {
             Column {
                 question.answers.forEachIndexed { index, answer ->
@@ -155,18 +253,12 @@ fun QuestionScreen(
             onClick = {
                 if (selectedOption != null) {
                     onNextClicked()
-                } else {
-//                    Toast.makeText(
-//                        LocalContext.current,
-//                        "Proszę wybrać odpowiedź.",
-//                        Toast.LENGTH_SHORT
-//                    ).show()
                 }
             },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(8.dp),
-//            colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF66CC99))
+            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF66CC99))
         ) {
             Text(
                 text = "Następne",
@@ -183,7 +275,7 @@ fun RadioButtonWithText(text: String, isSelected: Boolean, onClick: () -> Unit) 
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(vertical = 8.dp)
+            .padding(vertical = 8.dp, horizontal = 8.dp)
             .background(Color(0xFFD9D9D9))
             .padding(horizontal = 16.dp, vertical = 12.dp),
         verticalAlignment = Alignment.CenterVertically
