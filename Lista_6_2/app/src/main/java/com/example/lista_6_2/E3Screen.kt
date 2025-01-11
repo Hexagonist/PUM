@@ -9,25 +9,25 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
-@Composable
-fun E3Screen(exerciseList: ExerciseList) {
-    LazyColumn(modifier = Modifier.fillMaxSize()) {
-        items(exerciseList.exercises) { exercise ->
-            ExerciseCard(exercise = exercise)
-        }
-    }
-}
-
-@Composable
-fun ExerciseCard(exercise: Exercise) {
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(8.dp)
-    ) {
-        Column(modifier = Modifier.padding(16.dp)) {
-            Text(text = "Zadanie: ${exercise.content}")
-            Text(text = "Punkty: ${exercise.points}")
-        }
-    }
-}
+//@Composable
+//fun E3Screen(exerciseList: ExerciseList) {
+//    LazyColumn(modifier = Modifier.fillMaxSize()) {
+//        items(exerciseList.exercises) { exercise ->
+//            ExerciseCard(exercise = exercise)
+//        }
+//    }
+//}
+//
+//@Composable
+//fun ExerciseCard(exercise: Exercise) {
+//    Card(
+//        modifier = Modifier
+//            .fillMaxWidth()
+//            .padding(8.dp)
+//    ) {
+//        Column(modifier = Modifier.padding(16.dp)) {
+//            Text(text = "Zadanie: ${exercise.content}")
+//            Text(text = "Punkty: ${exercise.points}")
+//        }
+//    }
+//}
