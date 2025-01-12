@@ -5,7 +5,6 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -35,9 +34,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -66,18 +63,12 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-//                    Navigation()
                     Navigation(allExerciseList)
                 }
             }
         }
     }
 }
-//
-//sealed class Screens(val route: String) {
-//    data object MainScreen : Screens("main_screen")
-//    data object SecondScreen : Screens("second_screen")
-//}
 
 sealed class Screens(val route: String) {
     data object E1Screen : Screens("e1_screen")
@@ -105,10 +96,6 @@ fun E1Screen(
         items(exerciseListList) { exerciseList ->
             ExerciseListCard(
                 exerciseList = exerciseList,
-//                onClick = {
-////                    navController.navigate("e3/${exerciseList.index}")
-//                    onE3Screen
-//                }
                 onClick = { onE3Screen(exerciseList.index) }
             )
         }
@@ -167,15 +154,6 @@ fun ExerciseSummaryCard(exerciseSummary: ExerciseList) {
     }
 }
 
-//@Composable
-//fun E3Screen(exerciseList: ExerciseList) {
-//    LazyColumn(modifier = Modifier.fillMaxSize()) {
-//        items(exerciseList.exercises) { exercise ->
-//            ExerciseCard(exercise = exercise)
-//        }
-//    }
-//}
-
 @Composable
 fun E3Screen(arg: String?, exerciseListList: List<ExerciseList>, paddingValues: PaddingValues) {
     LazyColumn(modifier = Modifier.fillMaxSize().padding(paddingValues)) {
@@ -226,22 +204,6 @@ fun ExerciseCard(exercise: Exercise, index: Int) {
     }
 }
 
-
-//@Composable
-//fun Navigation() {
-//    val navController = rememberNavController()
-//    NavHost(navController = navController, startDestination = Screens.MainScreen.route) {
-//        composable(route = Screens.MainScreen.route){
-//            val arg = 5
-//            MainScreen{navController.navigate(Screens.SecondScreen.route + "/$arg")}
-//        }
-//        composable(route = Screens.SecondScreen.route + "/{arg}"){
-//            val arg = it.arguments?.getString("arg")
-//            SecondScreen(arg) {navController.popBackStack()}
-//        }
-//    }
-//}
-
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -270,7 +232,6 @@ fun BottomNavGraph(
                 allExerciseList.exerciseListList,
                 paddingValues
             )
-//            {navController.navigate(Screens.E3Screen.route + "/$arg")}
         }
 
         composable(route = Screens.E3Screen.route + "/{arg}"){
@@ -280,7 +241,6 @@ fun BottomNavGraph(
                 allExerciseList.exerciseListList,
                 paddingValues
             )
-//            {navController.popBackStack()}
         }
 
         composable(route = Screens.E2Screen.route){
@@ -310,40 +270,4 @@ fun BottomMenu(navController: NavHostController){
         }
     }
 }
-
-
-
-//
-//@Composable
-//fun MainScreen(onSecondScreen: () -> Unit) {
-//    Column(
-//        Modifier.fillMaxSize(),
-//        horizontalAlignment = Alignment.CenterHorizontally,
-//        verticalArrangement = Arrangement.Center
-//    ) {
-//        Text("Home Screen")
-//        Spacer(modifier = Modifier.height(8.dp))
-//        Button(onClick = onSecondScreen) {
-//            Text("Go to Second Screen")
-//        }
-//    }
-//}
-//
-//@Composable
-//fun SecondScreen(arg: String?, onHome: () -> Unit) {
-//    Column(
-//        Modifier.fillMaxSize(),
-//        horizontalAlignment = Alignment.CenterHorizontally,
-//        verticalArrangement = Arrangement.Center
-//    ) {
-//        Text("Second Screen. Argument: $arg")
-//        Spacer(modifier = Modifier.height(8.dp))
-//        Button(onClick = onHome) { Text("Go back to Main Screen") }
-//    }
-//}
-
-
-
-
-
 
