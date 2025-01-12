@@ -5,17 +5,15 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material3.Card
@@ -29,13 +27,9 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -91,8 +85,12 @@ sealed class BottomBar(
 
 
 @Composable
-fun E1Screen(onE3Screen: (Any?) -> Unit, exerciseListList: List<ExerciseList>) {
-    LazyColumn(modifier = Modifier.fillMaxSize()) {
+fun E1Screen(
+    onE3Screen: (Any?) -> Unit,
+    exerciseListList: List<ExerciseList>,
+    paddingValues: PaddingValues
+) {
+    LazyColumn(modifier = Modifier.fillMaxSize().padding(paddingValues)) {
         items(exerciseListList) { exerciseList ->
             ExerciseListCard(
                 exerciseList = exerciseList,
@@ -115,7 +113,7 @@ fun ExerciseListCard(exerciseList: ExerciseList, onClick: () -> Unit) {
             .clickable { onClick() }
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
-            Text(text = "Subject: ${exerciseList.subject.name}")
+            Text(text = exerciseList.subject.name)
             Text(text = "Lista: ${exerciseList.index}")
             Text(text = "Liczba zadań: ${exerciseList.exercises.size}")
             Text(text = "Ocena: ${exerciseList.grade}")
@@ -124,8 +122,8 @@ fun ExerciseListCard(exerciseList: ExerciseList, onClick: () -> Unit) {
 }
 
 @Composable
-fun E2Screen(exerciseSummaryList: List<ExerciseList>) {
-    LazyColumn(modifier = Modifier.fillMaxSize()) {
+fun E2Screen(exerciseSummaryList: List<ExerciseList>, paddingValues: PaddingValues) {
+    LazyColumn(modifier = Modifier.fillMaxSize().padding(paddingValues)) {
         items(exerciseSummaryList) { exerciseSummary ->
             ExerciseSummaryCard(exerciseSummary = exerciseSummary)
         }
@@ -140,7 +138,7 @@ fun ExerciseSummaryCard(exerciseSummary: ExerciseList) {
             .padding(8.dp)
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
-            Text(text = "Subject: ${exerciseSummary.subject.name}")
+            Text(text = exerciseSummary.subject.name)
             Text(text = "Średnia: ${exerciseSummary.grade}")
             Text(text = "Liczba list: ${exerciseSummary.listNum}")
         }
@@ -157,8 +155,8 @@ fun ExerciseSummaryCard(exerciseSummary: ExerciseList) {
 //}
 
 @Composable
-fun E3Screen(arg: String?, exerciseListList: List<ExerciseList>) {
-    LazyColumn(modifier = Modifier.fillMaxSize()) {
+fun E3Screen(arg: String?, exerciseListList: List<ExerciseList>, paddingValues: PaddingValues) {
+    LazyColumn(modifier = Modifier.fillMaxSize().padding(paddingValues)) {
         if (arg != null) {
             items(exerciseListList[arg.toInt()].exercises) { exercise ->
                 ExerciseCard(exercise = exercise)
@@ -205,18 +203,25 @@ fun Navigation(allExerciseList: UsersViewModel) {
 
     Scaffold(
         bottomBar = { BottomMenu(navController = navController)},
-        content = { BottomNavGraph(navController = navController, allExerciseList) }
+        content = {paddingValues ->
+            BottomNavGraph(navController = navController, allExerciseList, paddingValues) }
     )
 }
+
 @Composable
-fun BottomNavGraph(navController: NavHostController, allExerciseList: UsersViewModel){
+fun BottomNavGraph(
+    navController: NavHostController,
+    allExerciseList: UsersViewModel,
+    paddingValues: PaddingValues
+){
     NavHost(navController = navController, startDestination = Screens.E1Screen.route) {
         composable(route = Screens.E1Screen.route){
             E1Screen(
                 onE3Screen = { index ->
                     navController.navigate(Screens.E3Screen.route + "/$index")
                 },
-                allExerciseList.exerciseListList
+                allExerciseList.exerciseListList,
+                paddingValues
             )
 //            {navController.navigate(Screens.E3Screen.route + "/$arg")}
         }
@@ -225,12 +230,15 @@ fun BottomNavGraph(navController: NavHostController, allExerciseList: UsersViewM
             val arg = it.arguments?.getString("arg")
             E3Screen(
                 arg,
-                allExerciseList.exerciseListList
+                allExerciseList.exerciseListList,
+                paddingValues
             )
 //            {navController.popBackStack()}
         }
 
-        composable(route = Screens.E2Screen.route){ E2Screen(allExerciseList.getSubjectsSummaryList()) }
+        composable(route = Screens.E2Screen.route){
+            E2Screen(allExerciseList.getSubjectsSummaryList(), paddingValues)
+        }
 
     }
 }
