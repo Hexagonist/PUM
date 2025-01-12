@@ -1,49 +1,49 @@
 package com.example.lista_6_2
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Info
 import androidx.compose.material3.Card
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.navigation.NavDestination.Companion.hierarchy
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.lista_6_2.ui.theme.Lista_6_2Theme
 
-//class MainActivity : ComponentActivity() {
-//    private val allExerciseList: UsersViewModel by viewModels()
-//
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//
-//        // Generate data
-//        allExerciseList.generateExerciseLists(20)
-//
-//        setContent {
-//            Lista_6_2Theme {
-//                Surface(
-//                    modifier = androidx.compose.ui.Modifier.fillMaxSize(),
-//                    color = MaterialTheme.colorScheme.background
-//                ) {
-//                    NavigationHost(viewModel = allExerciseList)
-//                }
-//            }
-//        }
-//    }
-//}
 
 class MainActivity : ComponentActivity() {
     // Exercise lists
@@ -80,6 +80,16 @@ sealed class Screens(val route: String) {
     data object E3Screen : Screens("e3_screen")
 }
 
+sealed class BottomBar(
+    val route: String,
+    val title: String,
+    val icon: ImageVector
+) {
+    data object E1Screen : BottomBar(Screens.E1Screen.route, "Listy zadań", Icons.Default.Home)
+    data object E2Screen : BottomBar(Screens.E2Screen.route, "Oceny", Icons.Default.Info)
+}
+
+
 @Composable
 fun E1Screen(onE3Screen: (Any?) -> Unit, exerciseListList: List<ExerciseList>) {
     LazyColumn(modifier = Modifier.fillMaxSize()) {
@@ -113,14 +123,14 @@ fun ExerciseListCard(exerciseList: ExerciseList, onClick: () -> Unit) {
     }
 }
 
-//@Composable
-//fun E2Screen(exerciseSummaryList: List<ExerciseList>) {
-//    LazyColumn(modifier = Modifier.fillMaxSize()) {
-//        items(exerciseSummaryList) { exerciseSummary ->
-//            ExerciseSummaryCard(exerciseSummary = exerciseSummary)
-//        }
-//    }
-//}
+@Composable
+fun E2Screen(exerciseSummaryList: List<ExerciseList>) {
+    LazyColumn(modifier = Modifier.fillMaxSize()) {
+        items(exerciseSummaryList) { exerciseSummary ->
+            ExerciseSummaryCard(exerciseSummary = exerciseSummary)
+        }
+    }
+}
 
 @Composable
 fun ExerciseSummaryCard(exerciseSummary: ExerciseList) {
@@ -187,9 +197,19 @@ fun ExerciseCard(exercise: Exercise) {
 //    }
 //}
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Navigation(allExerciseList: UsersViewModel) {
     val navController = rememberNavController()
+
+    Scaffold(
+        bottomBar = { BottomMenu(navController = navController)},
+        content = { BottomNavGraph(navController = navController, allExerciseList) }
+    )
+}
+@Composable
+fun BottomNavGraph(navController: NavHostController, allExerciseList: UsersViewModel){
     NavHost(navController = navController, startDestination = Screens.E1Screen.route) {
         composable(route = Screens.E1Screen.route){
             E1Screen(
@@ -209,8 +229,33 @@ fun Navigation(allExerciseList: UsersViewModel) {
             )
 //            {navController.popBackStack()}
         }
+
+        composable(route = Screens.E2Screen.route){ E2Screen(allExerciseList.getSubjectsSummaryList()) }
+
     }
 }
+
+@Composable
+fun BottomMenu(navController: NavHostController){
+    val screens = listOf(
+        BottomBar.E1Screen, BottomBar.E2Screen
+    )
+
+    val navBackStackEntry by navController.currentBackStackEntryAsState()
+    val currentDestination = navBackStackEntry?.destination
+
+    NavigationBar{
+        screens.forEach{screen ->
+            NavigationBarItem(
+                label = { Text(text = screen.title) },
+                icon = { Icon(imageVector = screen.icon, contentDescription = "icon") },
+                selected = currentDestination?.hierarchy?.any { it.route == screen.route } == true,
+                onClick = {navController.navigate(screen.route)}
+            )
+        }
+    }
+}
+
 
 
 //
@@ -241,6 +286,8 @@ fun Navigation(allExerciseList: UsersViewModel) {
 //        Button(onClick = onHome) { Text("Go back to Main Screen") }
 //    }
 //}
+
+
 
 
 
