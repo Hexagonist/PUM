@@ -10,4 +10,5 @@ data class Student(
     var surname: String = "",
     var mean: String = "",
     var yearOfStudy: String = ""
+    // Stworz indeks studenta zeby poda
 ) : Parcelable
