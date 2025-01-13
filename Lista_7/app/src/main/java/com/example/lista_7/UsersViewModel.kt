@@ -1,50 +1,39 @@
-//package com.example.lista_7
-//
-//import androidx.lifecycle.ViewModel
-//import kotlin.math.round
-//import kotlin.random.Random
-//
-//class UsersViewModel : ViewModel() {
-//    lateinit var exerciseListList: List<ExerciseList>
-//
-//    fun generateRandomLoremIpsum(minWords: Int = 5, maxWords: Int = 20): String {
-//        val loremIpsumWords = listOf(
-//            "Lorem", "ipsum", "dolor", "sit", "amet", "consectetur", "adipiscing", "elit",
-//            "sed", "do", "eiusmod", "tempor", "incididunt", "ut", "labore", "et", "dolore",
-//            "magna", "aliqua", "Ut", "enim", "ad", "minim", "veniam", "quis", "nostrud",
-//            "exercitation", "ullamco", "laboris", "nisi", "ut", "aliquip", "ex", "ea", "commodo",
-//            "consequat"
-//        )
-//        return List(Random.nextInt(minWords, maxWords + 1)) { loremIpsumWords.random() }.joinToString(" ")
+package com.example.lista_7
+
+import androidx.lifecycle.ViewModel
+import kotlin.math.round
+import kotlin.random.Random
+
+class UsersViewModel : ViewModel() {
+    lateinit var listOfStudents: List<Student>
+
+    fun generateDummyStudents(): List<Student> {
+        // Predefined lists of random names and surnames
+        val names = listOf("John", "Alice", "Mark", "Sophia", "David", "Emma", "Michael", "Olivia", "William", "Ava")
+        val surnames = listOf("Smith", "Johnson", "Brown", "Williams", "Jones", "Garcia", "Miller", "Davis", "Martinez", "Hernandez")
+
+        // Function to generate a random mean value in the range [2.0, 5.0] with a step of 0.5
+        fun generateRandomMean(): Float {
+            val possibleMeans = listOf(2.0f, 2.5f, 3.0f, 3.5f, 4.0f, 4.5f, 5.0f)
+            return possibleMeans.random()
+        }
+
+        // Generate 10 dummy students
+        return List(10) {
+            Student(
+                indexNum = Random.nextInt(100000, 999999).toString(), // Generate 6-digit random index
+                name = names.random(),
+                surname = surnames.random(),
+                mean = generateRandomMean().toString(),
+                yearOfStudy = Random.nextInt(1, 5).toString() // Generate random year from 1-4
+            )
+        }
+    }
+
+//    // Example usage
+//    fun main() {
+//        val dummyStudents = generateDummyStudents()
+//        dummyStudents.forEach { println(it) }
 //    }
-//
-//    fun generateExerciseLists(numberOfLists: Int) {
-//        val subjects = listOf("Matematyka", "PUM", "Fizyka", "Elektronika", "Algorytmy")
-//        var index = 0
-//        exerciseListList = List(numberOfLists) {
-//            ExerciseList(
-//                exercises = MutableList(Random.nextInt(1, 11)) {
-//                    Exercise(
-//                        content = generateRandomLoremIpsum(),
-//                        points = Random.nextInt(0, 11)
-//                    )
-//                },
-//                subject = Subject(name = subjects.random()),
-//                grade = Random.nextInt(5).let { 3.0f + it * 0.5f },
-//                index = index++
-//            )
-//        }
-//    }
-//
-//    fun getSubjectsSummaryList(): List<ExerciseList> {
-//        val groupedBySubject = exerciseListList.groupBy { it.subject.name }
-//        return groupedBySubject.map { (subjectName, lists) ->
-//            val meanGrade = lists.map { it.grade }.average()
-//            ExerciseList(
-//                subject = Subject(name = subjectName),
-//                grade = meanGrade.toFloat(),
-//                listNum = lists.size
-//            )
-//        }
-//    }
-//}
+
+}

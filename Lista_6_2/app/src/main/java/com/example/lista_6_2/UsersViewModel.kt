@@ -7,6 +7,7 @@ import kotlin.random.Random
 class UsersViewModel : ViewModel() {
     lateinit var exerciseListList: List<ExerciseList>
 
+
     fun generateRandomLoremIpsum(minWords: Int = 5, maxWords: Int = 20): String {
         val loremIpsumWords = listOf(
             "Lorem", "ipsum", "dolor", "sit", "amet", "consectetur", "adipiscing", "elit",
