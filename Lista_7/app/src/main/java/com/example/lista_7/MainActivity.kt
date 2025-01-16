@@ -98,12 +98,12 @@ fun StudentListCard(student: Student, onClick: () -> Unit) {
     ) {
         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
             Column(modifier = Modifier.padding(16.dp)) {
-                Text(text = student.indexNum, fontSize = 20.sp, fontWeight = FontWeight.Bold)
+                Text(text = "Imię: ${student.name}")
                 Spacer(modifier = Modifier.height(8.dp))
-                Text(text = student.name)
+                Text(text = "Indeks: ${student.indexNum}", fontSize = 20.sp, fontWeight = FontWeight.Bold)
             }
             Column(modifier = Modifier.padding(16.dp)) {
-                Text(text = student.surname)
+                Text(text = "Nazwisko: ${student.surname}")
             }
         }
     }
@@ -162,19 +162,15 @@ fun ExerciseCard(student: Student) {
                 .padding(16.dp)
         ) {
             Column(modifier = Modifier.fillMaxSize()) {
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.End
-                ) {
-                    Text(
-                        text = "Indeks: ${student.indexNum}",
-                        fontSize = 16.sp,
-                        fontWeight = FontWeight.Bold
-                    )
-                }
                 Text(
-                    text = "Imie i Nazwisko:  ${student.name} ${student.surname}",
+                    text = "Imię i Nazwisko:  ${student.name} ${student.surname}",
                     fontSize = 18.sp,
+                    modifier = Modifier.padding(bottom = 8.dp),
+                    fontWeight = FontWeight.Bold
+                )
+                Text(
+                    text = "Indeks: ${student.indexNum}",
+                    fontSize = 16.sp,
                     modifier = Modifier.padding(bottom = 8.dp),
                     fontWeight = FontWeight.Bold
                 )
@@ -200,7 +196,7 @@ fun Navigation(allExerciseList: UsersViewModel) {
     val navController = rememberNavController()
 
     NavHost(navController = navController, startDestination = Screens.MasterScreen.route) {
-        composable(route = Screens.DetailScreen.route){
+        composable(route = Screens.MasterScreen.route){
             MasterScreen(
                 onDetailScreen = { index ->
                     navController.navigate(Screens.DetailScreen.route + "/$index")

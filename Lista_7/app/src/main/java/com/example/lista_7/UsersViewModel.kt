@@ -7,7 +7,7 @@ import kotlin.random.Random
 class UsersViewModel : ViewModel() {
     lateinit var listOfStudents: List<Student>
 
-    fun generateDummyStudents(num : Int): List<Student> {
+    fun generateDummyStudents(num : Int) {
         // Predefined lists of random names and surnames
         val names = listOf("John", "Alice", "Mark", "Sophia", "David", "Emma", "Michael", "Olivia", "William", "Ava")
         val surnames = listOf("Smith", "Johnson", "Brown", "Williams", "Jones", "Garcia", "Miller", "Davis", "Martinez", "Hernandez")
@@ -19,7 +19,7 @@ class UsersViewModel : ViewModel() {
         }
 
         // Generate 10 dummy students
-        return List(num) {
+        listOfStudents = List(num) {
             Student(
                 indexNum = Random.nextInt(100000, 999999).toString(), // Generate 6-digit random index
                 name = names.random(),
