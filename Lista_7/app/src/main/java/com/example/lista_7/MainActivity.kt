@@ -4,13 +4,11 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -18,36 +16,21 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Info
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.NavigationBar
-import androidx.compose.material3.NavigationBarItem
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavDestination.Companion.hierarchy
-import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.example.lista_6_2.Exercise
-import com.example.lista_6_2.ExerciseList
+//import com.example.lista_6_2.ExerciseList
 import com.example.lista_7.ui.theme.Lista_7Theme
 
 class MainActivity : ComponentActivity() {
@@ -96,10 +79,10 @@ fun MasterScreen(
 ) {
 //    LazyColumn(modifier = Modifier.fillMaxSize().padding(paddingValues)) {
     LazyColumn{
-        items(studentList) { student ->
+        itemsIndexed(studentList) { index, student ->
             StudentListCard(
                 student = student,
-                onClick = { onDetailScreen(student.index) } // muse stworzyc w student.kt
+                onClick = { onDetailScreen(index) }
             )
         }
     }
@@ -115,14 +98,12 @@ fun StudentListCard(student: Student, onClick: () -> Unit) {
     ) {
         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
             Column(modifier = Modifier.padding(16.dp)) {
-                Text(text = exerciseList.subject.name, fontSize = 20.sp, fontWeight = FontWeight.Bold)
+                Text(text = student.indexNum, fontSize = 20.sp, fontWeight = FontWeight.Bold)
                 Spacer(modifier = Modifier.height(8.dp))
-                Text(text = "Liczba zadań: ${exerciseList.exercises.size}")
+                Text(text = student.name)
             }
             Column(modifier = Modifier.padding(16.dp)) {
-                Text(text = "Lista: ${exerciseList.index}")
-                Spacer(modifier = Modifier.height(8.dp))
-                Text(text = "Ocena: ${exerciseList.grade}")
+                Text(text = student.surname)
             }
         }
     }
@@ -137,39 +118,39 @@ fun StudentListCard(student: Student, onClick: () -> Unit) {
 //    }
 //}
 
-@Composable
-fun ExerciseSummaryCard(exerciseSummary: ExerciseList) {
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(8.dp)
-    ) {
-        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-            Column(modifier = Modifier.padding(16.dp)) {
-                Text(text = exerciseSummary.subject.name, fontSize = 20.sp, fontWeight = FontWeight.Bold)
-                Spacer(modifier = Modifier.height(8.dp))
-                Text(text = "Liczba list: ${exerciseSummary.listNum}")
-            }
-            Column(modifier = Modifier.padding(16.dp)) {
-                Text(text = "Średnia: ${exerciseSummary.grade}")
-            }
-        }
-    }
-}
+//@Composable
+//fun ExerciseSummaryCard(exerciseSummary: ExerciseList) {
+//    Card(
+//        modifier = Modifier
+//            .fillMaxWidth()
+//            .padding(8.dp)
+//    ) {
+//        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+//            Column(modifier = Modifier.padding(16.dp)) {
+//                Text(text = exerciseSummary.subject.name, fontSize = 20.sp, fontWeight = FontWeight.Bold)
+//                Spacer(modifier = Modifier.height(8.dp))
+//                Text(text = "Liczba list: ${exerciseSummary.listNum}")
+//            }
+//            Column(modifier = Modifier.padding(16.dp)) {
+//                Text(text = "Średnia: ${exerciseSummary.grade}")
+//            }
+//        }
+//    }
+//}
 
 @Composable
-fun DetailScreen(arg: String?, exerciseListList: List<Student>) {
+fun DetailScreen(arg: String?, studentList: List<Student>) {
     LazyColumn {
         if (arg != null) {
-            itemsIndexed(exerciseListList[arg.toInt()].exercises) { index, exercise ->
-                ExerciseCard(exercise = exercise, index = index)
+            item {
+                ExerciseCard(studentList[arg.toInt()])
             }
         }
     }
 }
 
 @Composable
-fun ExerciseCard(exercise: Exercise, index: Int) {
+fun ExerciseCard(student: Student) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -186,19 +167,24 @@ fun ExerciseCard(exercise: Exercise, index: Int) {
                     horizontalArrangement = Arrangement.End
                 ) {
                     Text(
-                        text = "Pkt: ${exercise.points}",
+                        text = "Indeks: ${student.indexNum}",
                         fontSize = 16.sp,
                         fontWeight = FontWeight.Bold
                     )
                 }
                 Text(
-                    text = "Zadanie ${index + 1}",
+                    text = "Imie i Nazwisko:  ${student.name} ${student.surname}",
                     fontSize = 18.sp,
                     modifier = Modifier.padding(bottom = 8.dp),
                     fontWeight = FontWeight.Bold
                 )
                 Text(
-                    text = exercise.content,
+                    text = "Rok studiów: ${student.yearOfStudy}",
+                    fontSize = 16.sp,
+                    modifier = Modifier.padding(bottom = 8.dp)
+                )
+                Text(
+                    text = "Średnia: ${student.mean}",
                     fontSize = 16.sp,
                     modifier = Modifier.padding(bottom = 8.dp)
                 )
