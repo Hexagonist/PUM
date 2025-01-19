@@ -26,6 +26,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -44,6 +45,31 @@ import com.example.lista_8.ui.theme.Lista_8Theme
 //import com.google.mlkit.vision.segmentation.subject.Subject
 
 
+//class MainActivity : ComponentActivity() {
+//    // Exercise lists
+//    private val allSubjects: UsersViewModel by viewModels()
+//
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//
+//        // Generate data
+//        allSubjects.initializeSubjects()
+//
+//        setContent {
+//            Lista_8Theme {
+//                Surface(
+//                    modifier = Modifier.fillMaxSize(),
+//                    color = MaterialTheme.colorScheme.background
+//                ) {
+//                    Navigation(allSubjects)
+//                }
+//            }
+//        }
+//    }
+//}
+
+
+
 class MainActivity : ComponentActivity() {
     // Exercise lists
     private val allSubjects: UsersViewModel by viewModels()
@@ -55,12 +81,13 @@ class MainActivity : ComponentActivity() {
         allSubjects.initializeSubjects()
 
         setContent {
+            val subjectList by allSubjects.subjectList.observeAsState(emptyList()) // Observe LiveData
             Lista_8Theme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Navigation(allSubjects)
+                    Navigation(subjectViewModel = allSubjects, subjects = subjectList)
                 }
             }
         }
@@ -377,9 +404,56 @@ fun EditScreen(
 //    }
 //}
 
+
+
+//
+//@Composable
+//fun Navigation(
+//    subjectViewModel: UsersViewModel
+//) {
+//    val navController = rememberNavController()
+//    NavHost(navController = navController, startDestination = Screens.MainScreen.route) {
+//        composable(Screens.MainScreen.route) {
+//            MainScreen(
+//                navigateToAddNewScreen = { navController.navigate(Screens.AddNewScreen.route) },
+//                navigateToEditScreen = { subject ->
+//                    navController.navigate("${Screens.EditScreen.route}/${subject.name}")
+//                },
+//                subjects = subjectViewModel.subjectList
+//            )
+//        }
+//        composable(Screens.AddNewScreen.route) {
+//            AddNewScreen(
+//                onSubjectAdded = { subjectViewModel.addSubject(it) },
+//                navigateBack = { navController.popBackStack() }
+//            )
+//        }
+//        composable(
+//            route = "${Screens.EditScreen.route}/{subjectName}",
+//            arguments = listOf(navArgument("subjectName") { type = NavType.StringType })
+//        ) { backStackEntry ->
+//            val subjectName = backStackEntry.arguments?.getString("subjectName") ?: return@composable
+//            val subject = subjectViewModel.subjectList.find { it.name == subjectName }
+//            subject?.let {
+//                EditScreen(
+//                    subject = it,
+//                    onSubjectUpdated = { updatedSubject -> subjectViewModel.updateSubject(it, updatedSubject) },
+//                    onSubjectDeleted = { subjectViewModel.deleteSubject(it) },
+//                    navigateBack = { navController.popBackStack() }
+//                )
+//            }
+//        }
+//    }
+//}
+
+
+
+
+
 @Composable
 fun Navigation(
-    subjectViewModel: UsersViewModel
+    subjectViewModel: UsersViewModel,
+    subjects: List<Subject> // Pass the observed subjects
 ) {
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = Screens.MainScreen.route) {
@@ -389,7 +463,7 @@ fun Navigation(
                 navigateToEditScreen = { subject ->
                     navController.navigate("${Screens.EditScreen.route}/${subject.name}")
                 },
-                subjects = subjectViewModel.subjectList
+                subjects = subjects // Use the observed subjects
             )
         }
         composable(Screens.AddNewScreen.route) {
@@ -403,7 +477,7 @@ fun Navigation(
             arguments = listOf(navArgument("subjectName") { type = NavType.StringType })
         ) { backStackEntry ->
             val subjectName = backStackEntry.arguments?.getString("subjectName") ?: return@composable
-            val subject = subjectViewModel.subjectList.find { it.name == subjectName }
+            val subject = subjects.find { it.name == subjectName }
             subject?.let {
                 EditScreen(
                     subject = it,
