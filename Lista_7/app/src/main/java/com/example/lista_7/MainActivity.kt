@@ -61,23 +61,11 @@ sealed class Screens(val route: String) {
     data object DetailScreen : Screens("detail_screen")
 }
 
-//sealed class BottomBar(
-//    val route: String,
-//    val title: String,
-//    val icon: ImageVector
-//) {
-//    data object E1Screen : BottomBar(Screens.MasterScreen.route, "Listy zadań", Icons.Default.Home)
-//    data object E2Screen : BottomBar(Screens.DetailScreen.route, "Oceny", Icons.Default.Info)
-//}
-
-
 @Composable
 fun MasterScreen(
     onDetailScreen: (Any?) -> Unit,
     studentList: List<Student>
-//    paddingValues: PaddingValues
 ) {
-//    LazyColumn(modifier = Modifier.fillMaxSize().padding(paddingValues)) {
     LazyColumn{
         itemsIndexed(studentList) { index, student ->
             StudentListCard(
@@ -108,35 +96,6 @@ fun StudentListCard(student: Student, onClick: () -> Unit) {
         }
     }
 }
-
-//@Composable
-//fun DetailScreen(exerciseSummaryList: List<Student>) {
-//    LazyColumn{
-//        items(exerciseSummaryList) { exerciseSummary ->
-//            ExerciseSummaryCard(exerciseSummary = exerciseSummary)
-//        }
-//    }
-//}
-
-//@Composable
-//fun ExerciseSummaryCard(exerciseSummary: ExerciseList) {
-//    Card(
-//        modifier = Modifier
-//            .fillMaxWidth()
-//            .padding(8.dp)
-//    ) {
-//        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-//            Column(modifier = Modifier.padding(16.dp)) {
-//                Text(text = exerciseSummary.subject.name, fontSize = 20.sp, fontWeight = FontWeight.Bold)
-//                Spacer(modifier = Modifier.height(8.dp))
-//                Text(text = "Liczba list: ${exerciseSummary.listNum}")
-//            }
-//            Column(modifier = Modifier.padding(16.dp)) {
-//                Text(text = "Średnia: ${exerciseSummary.grade}")
-//            }
-//        }
-//    }
-//}
 
 @Composable
 fun DetailScreen(arg: String?, studentList: List<Student>) {
@@ -190,7 +149,6 @@ fun ExerciseCard(student: Student) {
 }
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Navigation(allExerciseList: UsersViewModel) {
     val navController = rememberNavController()
@@ -202,7 +160,6 @@ fun Navigation(allExerciseList: UsersViewModel) {
                     navController.navigate(Screens.DetailScreen.route + "/$index")
                 },
                 allExerciseList.listOfStudents
-//                paddingValues
             )
         }
 
@@ -211,38 +168,7 @@ fun Navigation(allExerciseList: UsersViewModel) {
             DetailScreen(
                 arg,
                 allExerciseList.listOfStudents
-//                paddingValues
             )
         }
     }
 }
-
-//@Composable
-//fun BottomNavGraph(
-//    navController: NavHostController,
-//    allExerciseList: UsersViewModel,
-//    paddingValues: PaddingValues
-//){
-//
-//}
-
-//@Composable
-//fun BottomMenu(navController: NavHostController){
-//    val screens = listOf(
-//        BottomBar.E1Screen, BottomBar.E2Screen
-//    )
-//
-//    val navBackStackEntry by navController.currentBackStackEntryAsState()
-//    val currentDestination = navBackStackEntry?.destination
-//
-//    NavigationBar{
-//        screens.forEach{screen ->
-//            NavigationBarItem(
-//                label = { Text(text = screen.title) },
-//                icon = { Icon(imageVector = screen.icon, contentDescription = "icon") },
-//                selected = currentDestination?.hierarchy?.any { it.route == screen.route } == true,
-//                onClick = {navController.navigate(screen.route)}
-//            )
-//        }
-//    }
-//}

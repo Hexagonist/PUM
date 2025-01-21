@@ -1,7 +1,6 @@
 package com.example.lista_7
 
 import androidx.lifecycle.ViewModel
-import kotlin.math.round
 import kotlin.random.Random
 
 class UsersViewModel : ViewModel() {
@@ -29,11 +28,4 @@ class UsersViewModel : ViewModel() {
             )
         }
     }
-
-//    // Example usage
-//    fun main() {
-//        val dummyStudents = generateDummyStudents()
-//        dummyStudents.forEach { println(it) }
-//    }
-
 }
