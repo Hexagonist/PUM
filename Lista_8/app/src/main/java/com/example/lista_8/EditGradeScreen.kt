@@ -1,4 +1,3 @@
-// File: app/src/main/java/com/example/lista_8/ui/EditGradeScreen.kt
 package com.example.lista_8.ui
 
 import androidx.compose.foundation.layout.Arrangement
@@ -11,7 +10,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.*
 import androidx.navigation.NavController
-import androidx.compose.material.*
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.OutlinedTextField
@@ -24,7 +22,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.lista_8.Grade
 import com.example.lista_8.GradeViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)

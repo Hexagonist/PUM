@@ -1,4 +1,3 @@
-// File: app/src/main/java/com/example/lista_8/MainActivity.kt
 package com.example.lista_8
 
 import android.os.Bundle
@@ -15,7 +14,6 @@ import com.example.lista_8.ui.GradesScreen
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        val app = application as Lista8App
 
         val database by lazy { GradeDatabase.getDatabase(this) }
         val repository by lazy { GradeRepository(database.gradeDao()) }

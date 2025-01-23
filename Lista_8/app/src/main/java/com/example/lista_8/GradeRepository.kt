@@ -1,4 +1,3 @@
-// File: app/src/main/java/com/example/lista_8/GradeRepository.kt
 package com.example.lista_8
 
 import androidx.lifecycle.LiveData
