@@ -24,6 +24,8 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.sp
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -34,7 +36,19 @@ fun AddGradeScreen(navController: NavController, gradeViewModel: GradeViewModel)
 
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text("Add Grade") })
+            TopAppBar(
+                title = {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = androidx.compose.foundation.layout.Arrangement.Center // This centers the content horizontally
+                    ) {
+                        Text(
+                            text = "Dodaj Nowy",
+                            fontWeight = FontWeight.Bold
+                        )
+                    }
+                }
+            )
         }
     ) { padding ->
         Column(
@@ -47,18 +61,21 @@ fun AddGradeScreen(navController: NavController, gradeViewModel: GradeViewModel)
             OutlinedTextField(
                 value = subject,
                 onValueChange = { subject = it },
-                label = { Text("Subject") }
+                label = { Text("Nazwa Przedmiotu") }
             )
             OutlinedTextField(
                 value = grade,
                 onValueChange = { grade = it },
-                label = { Text("Grade") }
+                label = { Text("Ocena") }
             )
             Button(onClick = {
                 gradeViewModel.insert(Grade(subject = subject, grade = grade))
                 navController.popBackStack()
             }) {
-                Text("Save")
+                Text(
+                    text = "Zapisz",
+                    fontSize = 20.sp
+                )
             }
         }
     }
