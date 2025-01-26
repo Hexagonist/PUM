@@ -8,7 +8,7 @@ interface GradeDao {
     @Query("SELECT * FROM grades")
     fun getAllGrades(): LiveData<List<Grade>>
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertGrade(grade: Grade)
 
     @Update
